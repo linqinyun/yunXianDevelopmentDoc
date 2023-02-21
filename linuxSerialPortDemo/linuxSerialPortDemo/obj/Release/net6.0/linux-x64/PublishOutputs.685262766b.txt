@@ -1,0 +1,8 @@
+D:\C#data\IntelligentBoxGit\linuxSerialPortDemo\linuxSerialPortDemo\bin\Release\net6.0\publish\linux-x64\linuxSerialPortDemo
+D:\C#data\IntelligentBoxGit\linuxSerialPortDemo\linuxSerialPortDemo\bin\Release\net6.0\publish\linux-x64\linuxSerialPortDemo.dll
+D:\C#data\IntelligentBoxGit\linuxSerialPortDemo\linuxSerialPortDemo\bin\Release\net6.0\publish\linux-x64\linuxSerialPortDemo.deps.json
+D:\C#data\IntelligentBoxGit\linuxSerialPortDemo\linuxSerialPortDemo\bin\Release\net6.0\publish\linux-x64\linuxSerialPortDemo.runtimeconfig.json
+D:\C#data\IntelligentBoxGit\linuxSerialPortDemo\linuxSerialPortDemo\bin\Release\net6.0\publish\linux-x64\linuxSerialPortDemo.pdb
+D:\C#data\IntelligentBoxGit\linuxSerialPortDemo\linuxSerialPortDemo\bin\Release\net6.0\publish\linux-x64\flyfire.CustomSerialPort.dll
+D:\C#data\IntelligentBoxGit\linuxSerialPortDemo\linuxSerialPortDemo\bin\Release\net6.0\publish\linux-x64\System.IO.Ports.dll
+D:\C#data\IntelligentBoxGit\linuxSerialPortDemo\linuxSerialPortDemo\bin\Release\net6.0\publish\linux-x64\libSystem.IO.Ports.Native.so

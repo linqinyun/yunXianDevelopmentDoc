@@ -1,0 +1,5 @@
+D:\C#data\IntelligentBoxGit\tcpSlave\tcpSlave\bin\Release\net6.0\publish\tcpSlave.exe
+D:\C#data\IntelligentBoxGit\tcpSlave\tcpSlave\bin\Release\net6.0\publish\tcpSlave.dll
+D:\C#data\IntelligentBoxGit\tcpSlave\tcpSlave\bin\Release\net6.0\publish\tcpSlave.deps.json
+D:\C#data\IntelligentBoxGit\tcpSlave\tcpSlave\bin\Release\net6.0\publish\tcpSlave.runtimeconfig.json
+D:\C#data\IntelligentBoxGit\tcpSlave\tcpSlave\bin\Release\net6.0\publish\tcpSlave.pdb

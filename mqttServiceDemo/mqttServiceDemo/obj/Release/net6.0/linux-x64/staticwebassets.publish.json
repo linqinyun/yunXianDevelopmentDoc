@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "C9KNohYVaDjPCOetiyYDFyR6lahtuYtfkWbvL7cgV0A=",
+  "Source": "mqttServiceDemo",
+  "BasePath": "_content/mqttServiceDemo",
+  "Mode": "Default",
+  "ManifestType": "Publish",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

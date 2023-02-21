@@ -1,0 +1,15 @@
+D:\C#data\IntelligentBoxGit\tcpWinMaster\tcpWinMaster\bin\Release\net6.0\tcpWinMaster.exe
+D:\C#data\IntelligentBoxGit\tcpWinMaster\tcpWinMaster\bin\Release\net6.0\tcpWinMaster.deps.json
+D:\C#data\IntelligentBoxGit\tcpWinMaster\tcpWinMaster\bin\Release\net6.0\tcpWinMaster.runtimeconfig.json
+D:\C#data\IntelligentBoxGit\tcpWinMaster\tcpWinMaster\bin\Release\net6.0\tcpWinMaster.dll
+D:\C#data\IntelligentBoxGit\tcpWinMaster\tcpWinMaster\bin\Release\net6.0\tcpWinMaster.pdb
+D:\C#data\IntelligentBoxGit\tcpWinMaster\tcpWinMaster\obj\Release\net6.0\tcpWinMaster.csproj.AssemblyReference.cache
+D:\C#data\IntelligentBoxGit\tcpWinMaster\tcpWinMaster\obj\Release\net6.0\tcpWinMaster.GeneratedMSBuildEditorConfig.editorconfig
+D:\C#data\IntelligentBoxGit\tcpWinMaster\tcpWinMaster\obj\Release\net6.0\tcpWinMaster.AssemblyInfoInputs.cache
+D:\C#data\IntelligentBoxGit\tcpWinMaster\tcpWinMaster\obj\Release\net6.0\tcpWinMaster.AssemblyInfo.cs
+D:\C#data\IntelligentBoxGit\tcpWinMaster\tcpWinMaster\obj\Release\net6.0\tcpWinMaster.csproj.CoreCompileInputs.cache
+D:\C#data\IntelligentBoxGit\tcpWinMaster\tcpWinMaster\obj\Release\net6.0\tcpWinMaster.dll
+D:\C#data\IntelligentBoxGit\tcpWinMaster\tcpWinMaster\obj\Release\net6.0\refint\tcpWinMaster.dll
+D:\C#data\IntelligentBoxGit\tcpWinMaster\tcpWinMaster\obj\Release\net6.0\tcpWinMaster.pdb
+D:\C#data\IntelligentBoxGit\tcpWinMaster\tcpWinMaster\obj\Release\net6.0\tcpWinMaster.genruntimeconfig.cache
+D:\C#data\IntelligentBoxGit\tcpWinMaster\tcpWinMaster\obj\Release\net6.0\ref\tcpWinMaster.dll

@@ -1,0 +1,15 @@
+D:\C#data\IntelligentBoxGit\tcpSlave\tcpSlave\bin\Release\net6.0\tcpSlave.exe
+D:\C#data\IntelligentBoxGit\tcpSlave\tcpSlave\bin\Release\net6.0\tcpSlave.deps.json
+D:\C#data\IntelligentBoxGit\tcpSlave\tcpSlave\bin\Release\net6.0\tcpSlave.runtimeconfig.json
+D:\C#data\IntelligentBoxGit\tcpSlave\tcpSlave\bin\Release\net6.0\tcpSlave.dll
+D:\C#data\IntelligentBoxGit\tcpSlave\tcpSlave\bin\Release\net6.0\tcpSlave.pdb
+D:\C#data\IntelligentBoxGit\tcpSlave\tcpSlave\obj\Release\net6.0\tcpSlave.csproj.AssemblyReference.cache
+D:\C#data\IntelligentBoxGit\tcpSlave\tcpSlave\obj\Release\net6.0\tcpSlave.GeneratedMSBuildEditorConfig.editorconfig
+D:\C#data\IntelligentBoxGit\tcpSlave\tcpSlave\obj\Release\net6.0\tcpSlave.AssemblyInfoInputs.cache
+D:\C#data\IntelligentBoxGit\tcpSlave\tcpSlave\obj\Release\net6.0\tcpSlave.AssemblyInfo.cs
+D:\C#data\IntelligentBoxGit\tcpSlave\tcpSlave\obj\Release\net6.0\tcpSlave.csproj.CoreCompileInputs.cache
+D:\C#data\IntelligentBoxGit\tcpSlave\tcpSlave\obj\Release\net6.0\tcpSlave.dll
+D:\C#data\IntelligentBoxGit\tcpSlave\tcpSlave\obj\Release\net6.0\refint\tcpSlave.dll
+D:\C#data\IntelligentBoxGit\tcpSlave\tcpSlave\obj\Release\net6.0\tcpSlave.pdb
+D:\C#data\IntelligentBoxGit\tcpSlave\tcpSlave\obj\Release\net6.0\tcpSlave.genruntimeconfig.cache
+D:\C#data\IntelligentBoxGit\tcpSlave\tcpSlave\obj\Release\net6.0\ref\tcpSlave.dll

@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "Z9khO7E4suvQWSXMhi0u6a7eta4z3YXywarY2wP3kj35D579ZHygMcClMbrwzt75Xpt7Mj36EzSODijWfTqF1w==",
+  "success": true,
+  "projectFilePath": "D:\\C#data\\IntelligentBoxGit\\tcpWinMaster\\tcpWinMaster\\tcpWinMaster.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\ZHR\\.nuget\\packages\\microsoft.netcore.app.host.linux-x64\\6.0.13\\microsoft.netcore.app.host.linux-x64.6.0.13.nupkg.sha512"
+  ],
+  "logs": []
+}

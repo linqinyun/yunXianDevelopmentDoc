@@ -1,0 +1,12 @@
+D:\C#data\IntelligentBoxGit\mqttServiceDemo\mqttServiceDemo\obj\Release\net6.0\linux-x64\PubTmp\Out\mqttServiceDemo
+D:\C#data\IntelligentBoxGit\mqttServiceDemo\mqttServiceDemo\obj\Release\net6.0\linux-x64\PubTmp\Out\appsettings.Development.json
+D:\C#data\IntelligentBoxGit\mqttServiceDemo\mqttServiceDemo\obj\Release\net6.0\linux-x64\PubTmp\Out\appsettings.json
+D:\C#data\IntelligentBoxGit\mqttServiceDemo\mqttServiceDemo\obj\Release\net6.0\linux-x64\PubTmp\Out\mqttServiceDemo.dll
+D:\C#data\IntelligentBoxGit\mqttServiceDemo\mqttServiceDemo\obj\Release\net6.0\linux-x64\PubTmp\Out\mqttServiceDemo.deps.json
+D:\C#data\IntelligentBoxGit\mqttServiceDemo\mqttServiceDemo\obj\Release\net6.0\linux-x64\PubTmp\Out\mqttServiceDemo.runtimeconfig.json
+D:\C#data\IntelligentBoxGit\mqttServiceDemo\mqttServiceDemo\obj\Release\net6.0\linux-x64\PubTmp\Out\mqttServiceDemo.pdb
+D:\C#data\IntelligentBoxGit\mqttServiceDemo\mqttServiceDemo\obj\Release\net6.0\linux-x64\PubTmp\Out\Microsoft.OpenApi.dll
+D:\C#data\IntelligentBoxGit\mqttServiceDemo\mqttServiceDemo\obj\Release\net6.0\linux-x64\PubTmp\Out\MQTTnet.dll
+D:\C#data\IntelligentBoxGit\mqttServiceDemo\mqttServiceDemo\obj\Release\net6.0\linux-x64\PubTmp\Out\Swashbuckle.AspNetCore.Swagger.dll
+D:\C#data\IntelligentBoxGit\mqttServiceDemo\mqttServiceDemo\obj\Release\net6.0\linux-x64\PubTmp\Out\Swashbuckle.AspNetCore.SwaggerGen.dll
+D:\C#data\IntelligentBoxGit\mqttServiceDemo\mqttServiceDemo\obj\Release\net6.0\linux-x64\PubTmp\Out\Swashbuckle.AspNetCore.SwaggerUI.dll

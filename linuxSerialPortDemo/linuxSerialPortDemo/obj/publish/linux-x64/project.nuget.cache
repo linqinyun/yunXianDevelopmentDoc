@@ -1,0 +1,21 @@
+{
+  "version": 2,
+  "dgSpecHash": "1RFLz5JTW6qevKsUfo2k68m7SbDPOCTz+O1OJj8sOjKLDk3Vu1IFOcVdu7XlYhRkE6mC6NTZMS1u8xy7eCcs4A==",
+  "success": true,
+  "projectFilePath": "D:\\C#data\\IntelligentBoxGit\\linuxSerialPortDemo\\linuxSerialPortDemo\\linuxSerialPortDemo.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\ZHR\\.nuget\\packages\\flyfire.customserialport\\3.0.2\\flyfire.customserialport.3.0.2.nupkg.sha512",
+    "C:\\Users\\ZHR\\.nuget\\packages\\microsoft.netcore.platforms\\5.0.0\\microsoft.netcore.platforms.5.0.0.nupkg.sha512",
+    "C:\\Users\\ZHR\\.nuget\\packages\\microsoft.win32.registry\\5.0.0\\microsoft.win32.registry.5.0.0.nupkg.sha512",
+    "C:\\Users\\ZHR\\.nuget\\packages\\runtime.linux-arm.runtime.native.system.io.ports\\5.0.0\\runtime.linux-arm.runtime.native.system.io.ports.5.0.0.nupkg.sha512",
+    "C:\\Users\\ZHR\\.nuget\\packages\\runtime.linux-arm64.runtime.native.system.io.ports\\5.0.0\\runtime.linux-arm64.runtime.native.system.io.ports.5.0.0.nupkg.sha512",
+    "C:\\Users\\ZHR\\.nuget\\packages\\runtime.linux-x64.runtime.native.system.io.ports\\5.0.0\\runtime.linux-x64.runtime.native.system.io.ports.5.0.0.nupkg.sha512",
+    "C:\\Users\\ZHR\\.nuget\\packages\\runtime.native.system.io.ports\\5.0.1\\runtime.native.system.io.ports.5.0.1.nupkg.sha512",
+    "C:\\Users\\ZHR\\.nuget\\packages\\runtime.osx-x64.runtime.native.system.io.ports\\5.0.0\\runtime.osx-x64.runtime.native.system.io.ports.5.0.0.nupkg.sha512",
+    "C:\\Users\\ZHR\\.nuget\\packages\\system.io.ports\\5.0.1\\system.io.ports.5.0.1.nupkg.sha512",
+    "C:\\Users\\ZHR\\.nuget\\packages\\system.security.accesscontrol\\5.0.0\\system.security.accesscontrol.5.0.0.nupkg.sha512",
+    "C:\\Users\\ZHR\\.nuget\\packages\\system.security.principal.windows\\5.0.0\\system.security.principal.windows.5.0.0.nupkg.sha512",
+    "C:\\Users\\ZHR\\.nuget\\packages\\microsoft.netcore.app.host.linux-x64\\6.0.13\\microsoft.netcore.app.host.linux-x64.6.0.13.nupkg.sha512"
+  ],
+  "logs": []
+}

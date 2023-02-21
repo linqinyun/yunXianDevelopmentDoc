@@ -1,0 +1,5 @@
+D:\C#data\IntelligentBoxGit\tcpWinMaster\tcpWinMaster\bin\Release\net6.0\publish\linux-x64\tcpWinMaster
+D:\C#data\IntelligentBoxGit\tcpWinMaster\tcpWinMaster\bin\Release\net6.0\publish\linux-x64\tcpWinMaster.dll
+D:\C#data\IntelligentBoxGit\tcpWinMaster\tcpWinMaster\bin\Release\net6.0\publish\linux-x64\tcpWinMaster.deps.json
+D:\C#data\IntelligentBoxGit\tcpWinMaster\tcpWinMaster\bin\Release\net6.0\publish\linux-x64\tcpWinMaster.runtimeconfig.json
+D:\C#data\IntelligentBoxGit\tcpWinMaster\tcpWinMaster\bin\Release\net6.0\publish\linux-x64\tcpWinMaster.pdb

@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33213.308
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "tcpWinMaster", "tcpWinMaster\tcpWinMaster.csproj", "{C8EEC377-2FBC-4C54-AC7A-7C31FF56EE98}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "tcpSlave", "..\tcpSlave\tcpSlave\tcpSlave.csproj", "{EB4D2825-E09F-4363-95D9-EABBF4A94528}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C8EEC377-2FBC-4C54-AC7A-7C31FF56EE98}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C8EEC377-2FBC-4C54-AC7A-7C31FF56EE98}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C8EEC377-2FBC-4C54-AC7A-7C31FF56EE98}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C8EEC377-2FBC-4C54-AC7A-7C31FF56EE98}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EB4D2825-E09F-4363-95D9-EABBF4A94528}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB4D2825-E09F-4363-95D9-EABBF4A94528}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB4D2825-E09F-4363-95D9-EABBF4A94528}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB4D2825-E09F-4363-95D9-EABBF4A94528}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5C7AC16D-DB29-4B6D-ADC6-B726CB7A9D52}
+	EndGlobalSection
+EndGlobal

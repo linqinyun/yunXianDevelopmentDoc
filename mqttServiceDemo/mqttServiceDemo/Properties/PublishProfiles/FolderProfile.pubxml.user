@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+https://go.microsoft.com/fwlink/?LinkID=208121.
+-->
+<Project>
+  <PropertyGroup>
+    <_PublishTargetUrl>D:\C#data\IntelligentBoxGit\mqttServiceDemo\mqttServiceDemo\bin\Release\net6.0\publish\</_PublishTargetUrl>
+    <History>True|2023-02-14T02:10:59.0404846Z;True|2023-02-14T09:39:34.9151053+08:00;True|2023-02-09T16:34:40.2450676+08:00;True|2023-02-09T11:35:04.2256013+08:00;True|2023-02-09T11:24:11.2749109+08:00;</History>
+    <LastFailureDetails />
+  </PropertyGroup>
+</Project>
