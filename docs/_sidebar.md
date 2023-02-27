@@ -1,6 +1,7 @@
 * [首页](/)
 * 云鲜上位机系统
   * [开发计划](upperComputer/开发计划.md)
+  * [指令集](upperComputer/指令集.md)
 * 云鲜Api服务
   * [开发计划](apiServer/开发计划.md)
 * 云鲜小程序
