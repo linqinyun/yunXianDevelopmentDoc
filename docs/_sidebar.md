@@ -1,11 +1,6 @@
-* [首页](/)
-* 云鲜上位机系统
-  * [开发计划](upperComputer/开发计划.md)
-  * [指令集](upperComputer/指令集.md)
-* 云鲜Api服务
-  * [开发计划](apiServer/开发计划.md)
-* 云鲜小程序
-  * [开发计划](miniProgram/开发计划.md)
-* 串口助手
-  * [说明文档](guide.md)
-  * [开发文档](guide.md)
+- [apiServer](apiServer/)
+  - [开发计划](apiServer/开发计划.md)
+- [miniProgram](miniProgram/)
+  - [开发计划](miniProgram/开发计划.md)
+- [upperComputer](upperComputer/)
+  - [开发文档](upperComputer/开发文档.md)
