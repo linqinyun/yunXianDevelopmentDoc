@@ -1,0 +1,126 @@
+C51 COMPILER V9.54   STCCAR                                                                08/11/2022 15:30:08 PAGE 1   
+
+
+C51 COMPILER V9.54, COMPILATION OF MODULE STCCAR
+OBJECT MODULE PLACED IN .\out\stccar.obj
+COMPILER INVOKED BY: D:\Keil_v5\C51\BIN\C51.EXE stccar.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND TABS(2) OBJECT(.\ou
+                    -t\stccar.obj)
+
+line level    source
+
+   1          /*---------------------------------------------------------------------*/
+   2          /* --- STC MCU Limited ------------------------------------------------*/
+   3          /* --- STC15F4K60S4 系列 定时器2用作串口1的波特率发生器举例------------*/
+   4          /* --- Mobile: (86)13922805190 ----------------------------------------*/
+   5          /* --- Fax: 86-0513-55012956,55012947,55012969 ------------------------*/
+   6          /* --- Tel: 86-0513-55012928,55012929,55012966-------------------------*/
+   7          /* --- Web: www.STCMCU.com --------------------------------------------*/
+   8          /* --- Web: www.GXWMCU.com --------------------------------------------*/
+   9          /* 如果要在程序中使用此代码,请在程序中注明使用了STC的资料及程序        */
+  10          /* 如果要在文章中应用此代码,请在文章中注明使用了STC的资料及程序        */
+  11          /*---------------------------------------------------------------------*/ 
+  12          
+  13          //本示例在Keil开发环境下请选择Intel的8058芯片型号进行编译
+  14          //若无特别说明,工作频率一般为11.0592MHz
+  15          //                           18.432000MHZ
+  16          
+  17          #include "intrins.h"
+  18          #include "uart.h"
+  19          
+  20          void init(void)
+  21          {
+  22   1        
+  23   1          P0M0 = 0x00;
+  24   1          P0M1 = 0x00;
+  25   1          P1M0 = 0x00;
+  26   1          P1M1 = 0x00;
+  27   1          P2M0 = 0x00;
+  28   1          P2M1 = 0x00;
+  29   1          P3M0 = 0x00;
+  30   1          P3M1 = 0x00;
+  31   1          P4M0 = 0x00;
+  32   1          P4M1 = 0x00;
+  33   1          P5M0 = 0x00;
+  34   1          P5M1 = 0x00;
+  35   1          P6M0 = 0x00;
+  36   1          P6M1 = 0x00;
+  37   1          P7M0 = 0x00;
+  38   1          P7M1 = 0x00;
+  39   1      }
+  40          
+  41          ////============================================================
+  42          ////写卡-以块为单位，每个块十六个字节（或加密）
+  43          ////============================================================
+  44          
+  45          uint8 card_write_block(void)
+  46          {
+  47   1        uint8 status = 0,i;
+  48   1        uint32 delay = 0;
+  49   1        SER_BUFFER[SEQNR] = 0x00;    //地址默认为00
+  50   1        SER_BUFFER[COMMAND] = 0x23; //表示写块指令
+  51   1        SER_BUFFER[LENGTH] = 0x18;  // 写块指令中携带的有效数据24个字节
+  52   1        SER_BUFFER[DATA] = 0X00;    //表示采用密码A校验卡片密码
+  53   1        for(i=0;i<6;i++) SER_BUFFER[DATA+1+i] = 0XFF;   //表示采用默认密码6个FF校验卡片密码
+  54   1        SER_BUFFER[DATA+7] = 0X02;    //表示将后面的十六个字节写入到第2块
+C51 COMPILER V9.54   STCCAR                                                                08/11/2022 15:30:08 PAGE 2   
+
+  55   1        for(i=0;i<16;i++) SER_BUFFER[DATA+8+i] = i; //表示将0x00~0x0F十六个数据写入到第2块
+  56   1        Send_Data(); //发送写块的数据
+  57   1        SER_BUFFER[COMMAND] = 0x00;
+  58   1        while((SER_BUFFER[COMMAND] == 0x00)&&(delay<200000))delay++;   //delay为了防止死机
+  59   1        if(SER_BUFFER[COMMAND] == 0x23) status = SER_BUFFER[DATA]; //将写卡的反馈状态进行返回
+  60   1        return status;
+  61   1      }
+  62          
+  63          ////============================================================
+  64          ////写卡-以块为单位，每个块十六个字节（或加密）
+  65          ////============================================================
+  66          
+  67          uint8 card_read_block(void)
+  68          {
+  69   1        uint8 status = 0,i;
+  70   1        uint32 delay = 0;
+  71   1        SER_BUFFER[SEQNR] = 0x00;    //地址默认为00
+  72   1        SER_BUFFER[COMMAND] = 0x22; //表示写块指令
+  73   1        SER_BUFFER[LENGTH] = 0x08;  // 写块指令中携带的有效数据24个字节
+  74   1        SER_BUFFER[DATA] = 0X00;    //表示采用密码A校验卡片密码
+  75   1        for(i=0;i<6;i++) SER_BUFFER[DATA+1+i] = 0XFF;   //表示采用默认密码6个FF校验卡片密码
+  76   1        SER_BUFFER[DATA+7] = 0X02;    //表示将后面的十六个字节写入到第2块
+  77   1        Send_Data(); //发送写块的数据
+  78   1        SER_BUFFER[COMMAND] = 0x00;
+  79   1        while((SER_BUFFER[COMMAND] == 0x00)&&(delay<200000))delay++;   //delay为了防止死机
+  80   1        if(SER_BUFFER[COMMAND] == 0x22) status = SER_BUFFER[DATA]; //将写卡的反馈状态进行返回
+  81   1        return status;
+  82   1      }
+  83          
+  84          void main(void)
+  85          {
+  86   1        init();          //初始化IO口
+  87   1        UART1_timer1_config(9600,0x40);  //默认初始化成和读卡器对接的IO口
+  88   1        while(1)
+  89   1        {
+  90   2          
+  91   2          if(SER_BUFFER[LENGTH] == 0x08)   //表示有卡片
+  92   2          {
+  93   3            P11 = 0;
+  94   3            UART1_timer1_config(9600,0x00);    //切换成对外的串口IO口
+  95   3            card_write_block();
+  96   3            SER_BUFFER[LENGTH] = 0;
+  97   3            UART1_timer1_config(9600,0x40);
+  98   3          }   
+  99   2        }
+ 100   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    318    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----      10
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

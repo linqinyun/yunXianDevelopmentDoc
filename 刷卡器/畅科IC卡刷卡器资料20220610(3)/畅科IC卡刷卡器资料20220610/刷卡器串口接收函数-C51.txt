@@ -1,0 +1,66 @@
+/*********************************************************************************************************
+** 函数名称:        void Serial_Int(void)
+** 功能描述: 串口中断函数.串口接收到数据(STX)后，先发送ACK信号，然后再继续接收全部数据.以后启动定时器2为
+             10毫秒溢出，若10毫秒内，未接收到下一个字节，则本次接收数据失败。
+**
+** 输　入: 
+**         
+**
+** 输　出: 无
+**
+** 函数返回: 无
+**           
+** 全局变量: 无
+********************************************************************************************************/
+void Serial_Int(void) interrupt 4 //using 1 
+{
+
+	uchar index;
+	uchar BCC_sum=0;
+	uchar rcv_len=5;  //因为除数据之外还有SeqNr,Command,Len,BCC以及ETX   
+	                  //所以接收长度要在数据长度LENGTH的基础上加5 	
+	ES=0;             //关闭串行I／O中断
+	RI=0;             //清接收中断标志位
+	if (SBUF != STX) return;			// 判断是否为帧头，
+
+    for(index=0;index<rcv_len;index++)//循环接收TX模块发送的数据块
+	{
+		START_T0(RCAP0_10ms);//打开并设定定时0，设定定时时间为10ms,即接收每个数据的等待超时为10ms
+		while(RI==0&&TF0==0)WDT_CONTR=0x3B;//判断接收到数据或超时
+		if(RI==1)            //如果是接收到数据而退出while循环
+		{	RI=0;        //清接收中断标志
+			SER_BUFFER[index]=SBUF;//将接收到的数据依次保存到数据缓冲区
+			if(index==LENGTH)
+			{	
+			     rcv_len+=SER_BUFFER[index];//将接收的TX模块发送过来的数据长度值加上5
+			}
+			if(index<rcv_len-2)	
+			{
+			     BCC_sum^=SER_BUFFER[index];//计算数据块的BCC校验
+			}
+		}
+		else              //如果是其中的某个数据超时，直接退出
+	    {	
+			break;
+		}
+	}
+	STOP_T0();               //停止定时器0
+	ES=1;                    //打开串行I／O中断	
+	
+	if(index==rcv_len)       //判断接收到的数据长度是否正确
+	{
+		if(BCC_sum!=~SER_BUFFER[rcv_len-2]) //如果接收数据正确，则判断BCC校验是否正确
+		{
+			return;   //校验BCC
+		}
+		if(SER_BUFFER[rcv_len-1]!=ETX)	//如果BCC校验正确，最后判断是否有结束符ETX
+		{
+			return;
+		}
+	}
+	else	
+	{
+		return;
+	} 
+	NEW_DATA=1; //接收到的数据格式正确，置新数据标志位为1  
+}	

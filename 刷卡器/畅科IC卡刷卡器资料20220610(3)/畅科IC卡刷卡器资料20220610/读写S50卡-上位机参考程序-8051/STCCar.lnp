@@ -1,0 +1,4 @@
+"STARTUP.obj",
+"stccar.obj" 
+TO "STCCar" 
+RAMSIZE(256) 

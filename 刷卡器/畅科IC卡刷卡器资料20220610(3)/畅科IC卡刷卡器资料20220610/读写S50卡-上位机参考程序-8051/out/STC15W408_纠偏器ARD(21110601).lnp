@@ -1,0 +1,4 @@
+".\out\STARTUP.obj",
+".\out\stccar.obj" 
+TO ".\out\STC15W408_¾ÀÆ«Æ÷ARD(21110601)" 
+PRINT(".\STC15W408_¾ÀÆ«Æ÷ARD(21110601).m51") RAMSIZE(256) 

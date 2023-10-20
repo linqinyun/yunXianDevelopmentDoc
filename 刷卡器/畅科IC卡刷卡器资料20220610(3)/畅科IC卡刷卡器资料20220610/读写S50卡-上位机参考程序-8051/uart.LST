@@ -1,0 +1,233 @@
+C51 COMPILER V9.54   UART                                                                  08/11/2022 15:30:09 PAGE 1   
+
+
+C51 COMPILER V9.54, COMPILATION OF MODULE UART
+OBJECT MODULE PLACED IN .\out\uart.obj
+COMPILER INVOKED BY: D:\Keil_v5\C51\BIN\C51.EXE uart.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND TABS(2) OBJECT(.\out\
+                    -uart.obj)
+
+line level    source
+
+   1          #include "uart.h"
+   2          
+   3          uint8 idata SER_BUFFER[64]; 
+   4          uint8 idata SER_BUFFER1[10]; 
+   5          
+   6          
+   7          /*********************************************************************************************************
+   8          ** 函数名称:        uchar Send_Data(void)
+   9          ** 功能描述: 将数据缓冲区的数据发送给TX模块
+  10                       定时器2作为串行口看门狗定时器。发送STX后，启动定时器2为10毫秒溢出，
+  11                       若定时器2溢出(10ms没有接收到TX模块的ACK，则本次数据链建立失败。
+  12          **
+  13          ** 输　入: 
+  14          **         
+  15          **
+  16          ** 输　出: 无
+  17          **
+  18          ** 函数返回:错误类型
+  19          **           
+  20          ** 全局变量: 无
+  21          ********************************************************************************************************/
+  22          
+  23          
+  24          uint8 Send_Data(void)
+  25          {
+  26   1        uint8 send_len;              //发送数据长度
+  27   1        uint8 i;
+  28   1        P15 = 1;
+  29   1        ES=0;                        //关闭串行I／O中断
+  30   1        REN=0;               //串口不允许接收
+  31   1        TI = 0;
+  32   1        SBUF=STX;            //将起始符STX放到串口数据缓冲器
+  33   1        while(TI==0);        //查询串口发送中断标志位TI,判断是否发送STX完成
+  34   1        TI=0;                //清发送中断标志位
+  35   1      
+  36   1        send_len=SER_BUFFER[LENGTH]+5;  //因为除数据之外还有SeqNr,Command,Len,BCC以及ETX需要发送   
+  37   1                                        //所以发送长度要在数据长度LENGTH的基础上加5
+  38   1        SER_BUFFER[send_len-2]=0;       //倒数第2的发送缓冲区为BCC，清0
+  39   1        SER_BUFFER[send_len-1]=ETX;     //发送缓冲区的最末为结束符ETX
+  40   1      
+  41   1          //Delay_50us(2);
+  42   1        for(i=0; i < send_len; i++)//循环发送缓冲区的数据到TX模块
+  43   1        {
+  44   2          SBUF=SER_BUFFER[i];
+  45   2          if(i < (send_len-2))   //如果不到BCC校验，将之前所发送数据进行异或
+  46   2            SER_BUFFER[send_len-2]^=SER_BUFFER[i];
+  47   2          if(i==send_len-3)    //到BCC校验，将之前所有异或的数据再取反得到BCC校验数据
+  48   2            SER_BUFFER[send_len-2]=~SER_BUFFER[send_len-2];
+  49   2          while(TI==0);               //查询是否发送一个字节完毕
+  50   2          TI=0;
+  51   2        }
+  52   1      //  CON_485=0;
+  53   1        REN=1;                         //串口允许接收
+  54   1        ES=1;                          //打开串行I／O中断
+C51 COMPILER V9.54   UART                                                                  08/11/2022 15:30:09 PAGE 2   
+
+  55   1        P15 = 0;  
+  56   1        return  COMM_OK;               //返回COMM_OK
+  57   1      }
+  58          
+  59          //========================================================================
+  60          // 函数: SetTimer2Baudraye(u16 dat)
+  61          // 描述: 设置Timer2做波特率发生器。
+  62          // 参数: dat: Timer2的重装值.
+  63          // 返回: none.
+  64          // 版本: VER1.0
+  65          // 日期: 2014-11-28
+  66          // 备注: 
+  67          //========================================================================
+  68          //void SetTimer2Baudraye(u16 dat)  // 使用Timer2做波特率.
+  69          //{
+  70          //    AUXR &= ~(1<<4);    //Timer stop
+  71          //    AUXR &= ~(1<<3);    //Timer2 set As Timer
+  72          //    AUXR |=  (1<<2);    //Timer2 set as 1T mode
+  73          //    T2H = dat / 256;
+  74          //    T2L = dat % 256;
+  75          //    IE2  &= ~(1<<2);    //禁止中断
+  76          //    AUXR |=  (1<<4);    //Timer run enable
+  77          //}
+  78          
+  79          
+  80          //========================================================================
+  81          // 函数: void   UART1_config(u8 brt)
+  82          // 描述: UART1初始化函数。
+  83          // 参数: brt: 选择波特率, 2: 使用Timer2做波特率, 其它值: 使用Timer1做波特率.
+  84          // 返回: none.
+  85          // 版本: VER1.0
+  86          // 日期: 2014-11-28
+  87          // 备注: 
+  88          //========================================================================
+  89          void UART1_timer1_config(uint32_t Baudrate1,uint8 cport)    // 选择波特率, 2: 使用Timer2做波特率, 其它值: 
+             -使用Timer1做波特率.
+  90          {
+  91   1        /*********** 波特率使用定时器1 *****************/
+  92   1          TR1 = 0;
+  93   1          AUXR &= ~0x01;    //S1 BRT Use Timer1;
+  94   1          AUXR |=  (1<<6);  //Timer1 set as 1T mode
+  95   1          TMOD &= ~(1<<6);  //Timer1 set As Timer
+  96   1          TMOD &= ~0x30;    //Timer1_16bitAutoReload;
+  97   1          TH1 = (u8)((65536UL - (MAIN_Fosc / 4) / Baudrate1) / 256);
+  98   1          TL1 = (u8)((65536UL - (MAIN_Fosc / 4) / Baudrate1) % 256);
+  99   1          ET1 = 0;  //禁止中断
+ 100   1          INT_CLKO &= ~0x02;  //不输出时钟
+ 101   1          TR1  = 1;
+ 102   1        /*************************************************/
+ 103   1      
+ 104   1          SCON = (SCON & 0x3f) | 0x40;    //UART1模式, 0x00: 同步移位输出, 0x40: 8位数据,可变波特率, 0x80: 9位数
+             -据,固定波特率, 0xc0: 9位数据,可变波特率
+ 105   1          ES  = 1;    //允许中断
+ 106   1          REN = 1;    //允许接收
+ 107   1          P_SW1 &= 0x3f;
+ 108   1          P_SW1 |= cport;      //UART1 switch to, 0x00: P3.0 P3.1, 0x40: P3.6 P3.7, 0x80: P1.6 P1.7, 0xC0: P4.3 
+             -P4.4
+ 109   1          EA=1;
+ 110   1      }
+ 111          
+ 112          
+ 113          /*********************************************************************************************************
+C51 COMPILER V9.54   UART                                                                  08/11/2022 15:30:09 PAGE 3   
+
+ 114          ** 函数名称:        void Serial_Int(void)
+ 115          ** 功能描述: 串口中断函数.串口接收到数据(STX)后，先发送ACK信号，然后再继续接收全部数据.以后启动定时器2为
+ 116                       10毫秒溢出，若10毫秒内，未接收到下一个字节，则本次接收数据失败。
+ 117          **
+ 118          ** 输　入: 
+ 119          **         
+ 120          **
+ 121          ** 输　出: 无
+ 122          **
+ 123          ** 函数返回: 无
+ 124          **           
+ 125          ** 全局变量: 无
+ 126          ********************************************************************************************************/
+ 127          
+ 128          void SerialPort1_ISR(void) interrupt 4 //using 1 
+ 129          {
+ 130   1        unsigned long delay = 0;
+ 131   1        uint8 i;
+ 132   1        uint8 index;
+ 133   1        uint8 BCC_sum=0;
+ 134   1        uint8 rcv_len=5;  //因为除数据之外还有SeqNr,Command,Len,BCC以及ETX   
+ 135   1                          //所以接收长度要在数据长度LENGTH的基础上加5             
+ 136   1        P25 = 0;
+ 137   1        ES=0;             //关闭串行I／O中断
+ 138   1        RI=0;      //清接收中断标志位
+ 139   1        if (SBUF != STX) 
+ 140   1        { 
+ 141   2          ES=1;
+ 142   2          return;     // 判断是否为帧头，
+ 143   2        }   
+ 144   1        
+ 145   1        for(index=0;index<rcv_len;index++)//循环接收TX模块发送的数据块
+ 146   1        {
+ 147   2          while((RI == 0)&&(delay < 200000))delay++;//判断接收到数据或超时
+ 148   2          if(delay>199995)    
+ 149   2          {
+ 150   3            delay= 0;
+ 151   3            RI=0;
+ 152   3            for(i=0;i<64;i++) SER_BUFFER[i]=0;
+ 153   3            ES=1;
+ 154   3            return;     
+ 155   3          }
+ 156   2      
+ 157   2          if(RI == 1)            //如果是接收到数据而退出while循环
+ 158   2          { 
+ 159   3            RI=0;       //清接收中断标志
+ 160   3            delay= 0;
+ 161   3            SER_BUFFER[index]=SBUF;//将接收到的数据依次保存到数据缓冲区
+ 162   3            if(index==LENGTH)
+ 163   3            { 
+ 164   4                 rcv_len+=SER_BUFFER[index];//将接收的TX模块发送过来的数据长度值加上5
+ 165   4            }
+ 166   3            if(index<rcv_len-2) 
+ 167   3            {
+ 168   4                 BCC_sum^=SER_BUFFER[index];//计算数据块的BCC校验
+ 169   4            } 
+ 170   3          }
+ 171   2        } 
+ 172   1        
+ 173   1        if(index==rcv_len)       //判断接收到的数据长度是否正确
+ 174   1        {
+ 175   2          if(BCC_sum!=~SER_BUFFER[rcv_len-2]) //如果接收数据正确，则判断BCC校验是否正确
+C51 COMPILER V9.54   UART                                                                  08/11/2022 15:30:09 PAGE 4   
+
+ 176   2          {
+ 177   3          
+ 178   3            for(i=0;i<64;i++) SER_BUFFER[i]=0;
+ 179   3            ES=1;
+ 180   3            return;   //校验BCC
+ 181   3          }
+ 182   2          if(SER_BUFFER[rcv_len-1]!=ETX)  //如果BCC校验正确，最后判断是否有结束符ETX
+ 183   2          {
+ 184   3            
+ 185   3            for(i=0;i<64;i++) SER_BUFFER[i]=0;
+ 186   3            ES=1;
+ 187   3            return;
+ 188   3          }
+ 189   2        }
+ 190   1        else  
+ 191   1        {
+ 192   2          for(i=0;i<64;i++) SER_BUFFER[i]=0;
+ 193   2          ES=1;
+ 194   2          return;
+ 195   2        }
+ 196   1        ES=1;
+ 197   1      }
+ 198          
+ 199          
+ 200          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    577    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----      13
+   IDATA SIZE       =     74    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
